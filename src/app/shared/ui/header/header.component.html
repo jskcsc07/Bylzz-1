@@ -1,0 +1,45 @@
+<header>
+  <div class="aa--flex aa--items-center">
+    <!-- BEGIN: Title -->
+    <a routerLink="/home" class="aa--flex aa--items-center">
+      <img src="/assets/logo.svg" class="logo-icon" alt="Bylzz Logo" />
+      <span class="aa--text-xl aa--font-semibold">
+        <span class="aa--hidden lg:aa--inline">Bylzz</span>
+      </span>
+    </a>
+    <!-- END: Title -->
+
+    <!-- BEGIN: Main menu items -->
+    <div class="menu-items">
+      @for (item of menuItems; track $index) {
+      <a mat-button [routerLink]="item.link" routerLinkActive="active" #rla="routerLinkActive" [color]="'error'">
+        <fa-icon [icon]="item.icon" />
+        <span class="aa--ml-2 aa--hidden lg:aa--inline">{{ item.label }}</span>
+      </a>
+      }
+    </div>
+    <!-- END: Main menu items -->
+  </div>
+
+  <div class="aa--flex aa--items-center">
+    @if (authUser; as user) {
+    <aa-avatar [text]="user.firstName + ' ' + user.lastName" [matMenuTriggerFor]="userMenu"
+      class="aa--cursor-pointer" />
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item type="button" disabled>
+        {{ user.firstName + ' ' + user.lastName }}
+      </button>
+      <button mat-menu-item type="button" (click)="logout.emit()">
+        <fa-icon class="aa--mr-2" [icon]="'right-from-bracket'" />
+        Sign out
+      </button>
+    </mat-menu>
+    } @else {
+    <a mat-stroked-button routerLink="/auth/login">
+      <fa-icon [icon]="'user'" />
+      <span class="aa--ml-2 aa--hidden lg:aa--inline">Login</span>
+    </a>
+    }
+  </div>
+</header>

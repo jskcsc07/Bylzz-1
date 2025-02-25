@@ -1,0 +1,8 @@
+.form-wrapper {
+  @apply aa--mt-10 aa--w-10/12 md:aa--w-1/2;
+
+  form {
+    background-color: white;
+    @apply aa--grid aa--gap-2;
+  }
+}
