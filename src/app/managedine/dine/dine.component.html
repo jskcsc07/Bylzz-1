@@ -1,0 +1,116 @@
+
+<h4 class="titleh4">Dine Management</h4>
+<button class="bt1n btnbox" id="show" (click)="shows()">+Add Dines</button>
+<button class="bt1n btnbox" id="edit" (click)="edit()">Edit Dine</button>
+<div class="comman" *ngIf="show" >
+    
+    
+    <div class="row box">
+        <form [formGroup]="myAddForm" (ngSubmit)="onFormSubmit()"  class="col lbl2">
+            <button  class="close" (click)="close()">Close</button>
+    <div class="row lbl"><h4>Add Dinning Table Name like(T1,T2,T3,T4 or Table1,Table2,Table3,Table4)</h4></div>
+    
+    
+    <div class="col">  <label>
+        <input type="checkbox"  formControlName="status"/>
+        Status
+      </label>
+    </div>  
+    <div class="form-group row">
+        <div class="col"><label class="lbl" for="floor_id" id="floor_id" >Select Floor :</label></div>
+        <div class="col">
+            <select class="lbl" formControlName="floor_id">
+                <option  class="lbl" *ngFor="let f of Floordata" value="{{f._id}}" >{{f.name}}</option>
+            </select>
+        </div>
+      
+          </div>
+    <div class="form-group row">
+        <div class="col"><label class="lbl" for="name" id="name" > Name :</label></div>
+        <div class="col"><input class="lbl" type="text" formControlName="name"   id="nametxt"/></div>
+        <div class="col"><div *ngIf="myAddForm.get('name')?.invalid">
+            Name is required.</div>
+          </div>
+       </div>
+
+    <div class="form-group row">
+        <div class="col"><label class="lbl" for="description" id="description" > Description :</label></div>
+        <div class="col"><input class="lbl" type="text" formControlName="description"   id="description"/></div>
+       
+     </div>
+     <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+    <div class="row">
+       <div class="col"><button style="border: solid black; padding: 10px;" [disabled]="myAddForm.invalid " class="bt1n" type="submit">+</button>
+       </div> 
+    </div>
+</form>
+   
+</div>
+</div>
+
+<div class=" comman" *ngIf="showEdit">
+   
+    <div class="row box">
+        <form  [formGroup]="myEditForm" (ngSubmit)="onFormEdit()"  class="col lbl2">
+            <button  class="close" (click)="close()">Close</button>
+        <div class="row">
+            <div class="col"><h2 ><b>Edit</b></h2></div>
+        </div>
+            
+        <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+        <div class="col">  <label>
+            <input type="checkbox"  formControlName="status"/>
+            Status
+          </label>
+        </div>  
+        <div class="form-group row">
+            <div class="col"><label class="lbl" for="floor_id" id="floor_id" >Selected Floor Name :</label></div>
+            <div class="col">
+                <select class="lbl" formControlName="floor_id">
+                    <option  class="lbl" *ngFor="let d of Floordata index as i" [selected]="d._id===popdata2.floor_id" value="{{d._id}}" >{{d.name}}</option>
+                </select>
+            </div>
+           
+              </div>
+                <div class="form-group row">
+                    <div class="col"><label class="lbl" for="name" id="name" > Name :</label></div>
+                    <div class="col">  <input style="width: 114px; margin: 3px;" formControlName="name" type="text"  value="{{popdata2.name}}">
+                        
+                    </div></div>
+                <div class="form-group row">
+                <div class="col"><label class="lbl" for="description" id="description" > Description :</label></div>
+                
+                <div class="col"> <input style="width: 250px; margin: 3px;" formControlName="description"  type="text"  aria-multiline="true" value="{{popdata2.description}}">
+                   
+                </div></div>
+                <div class="row">
+                    <div class="col">
+           <button class="bt1n" style=" margin: 3px;" id="baseb" [disabled]="myEditForm.invalid" >Update</button>
+       
+        
+    </div>
+    </div>
+        </form>
+    </div>
+</div>
+<div class=" comman" *ngIf="showQr">
+   
+    <div class="row box">
+        <button  class="close" (click)="close()">Close</button>
+      [hi this is qr : {{qrData}}]
+    </div>
+</div>
+<div *ngIf="editag">
+<ag-grid-angular class="box ag-theme-quartz"
+style="height:500px;" 
+[rowData]="dinedata"
+    [columnDefs]="colDefs" 
+[pagination]="pagination"
+[paginationPageSize]="paginationPageSize"
+[paginationPageSizeSelector]="paginationPageSizeSelector"
+(cellClicked)="onCellClick($event)"
+    />
+    <div >
+        <jsk-popup (deletedconfirmedclicked)="deletedConfirmed($event)" (clicked)="handleChildClick()" [style]="display" [tabname]="tablename" [data]="valueid" [modal]="modal"></jsk-popup>
+    </div>  
+</div>

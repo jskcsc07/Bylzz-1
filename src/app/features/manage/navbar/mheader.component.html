@@ -1,0 +1,38 @@
+<!-- @if (vm$ | async; as vm) {
+<section>
+  <h1>
+    {{ vm.greeting }},
+    <span class="aa--text-primary">
+      {{ vm.authUser?.firstName }} {{ vm.authUser?.lastName }}
+    </span>
+  </h1>
+
+  <p class="aa--text-xl">
+    Shhh... 🤫 - This is a
+    <span class="aa--text-primary">top secret</span>
+    feature!
+  </p>
+
+</section>
+} -->
+<table>
+  <tr>
+    <td class="col1" style="width: 80px;">
+      @for (item of menuItems; track $index) {
+      <div class="managelist">
+        <a mat-button [routerLink]="item.link" routerLinkActive="active" #rla="routerLinkActive" [color]="'error'">
+
+          <span class="aa--ml-2 aa--hidden lg:aa--inline">{{ item.label }}</span>
+        </a>
+      </div>
+      }
+
+
+    </td>
+    <td style="width: 100%" class="tdcontainerformanage">
+      jsk
+
+      <router-outlet></router-outlet>
+    </td>
+  </tr>
+</table>

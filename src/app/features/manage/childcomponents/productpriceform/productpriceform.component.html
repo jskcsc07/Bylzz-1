@@ -1,0 +1,168 @@
+
+<h4 class="titleh4">Map Product Price Management</h4>      
+<button class="bt1n btnbox" id="show" (click)="shows()">+Add Product Price</button>
+<button class="bt1n btnbox" id="edit" (click)="edit()">Edit Product Price</button>
+<div class="comman" *ngIf="show" >
+    
+    <div class="row box">                                                           
+        <!-- left col -->
+        <form (ngSubmit)="onFormSubmit()"[formGroup]="myAddForm"  class="col lbl2" >
+            <button  class="close" (click)="close()">Close</button>
+            <div class="row lbl"><h4>Add Products Price</h4></div>
+    
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="SelectProductId" id="SelectProductId" >Select Product :</label></div>
+                <div class="col">
+                    <select formControlName="SelectProductId" class="lbl" (change)="loadProducts2()" >
+                        <!-- <option  *ngIf="prodata" [selected]="prodata[0]._id" >{{prodata[0].Productname}}</option>    -->
+       <option class="lbl" *ngFor="let d of Productnamedata index as i"  value="{{d._id}}" >{{d.Productname}}</option>      
+                                                                                                    
+                   </select>
+                   <!-- <div><button   value="{{prodata[0]._id}}"></button></div> -->
+                </div>
+            </div>
+                                                                                      
+            
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="selectcategoryID" id="selectcategoryID" >Select Category Name :</label></div>
+                <div class="col">
+                   
+                    <select id="selectcategoryID"  formControlName="selectcategoryID"  class="lbl">
+                        <option disabled class="lbl">Select Category Name</option>
+                        <option disabled class="lbl" *ngFor="let d of categorynamedata index as i" [selected]="d._id===prodata[0].selectcategoryID" value="{{d._id}}" >{{d.name}}</option>
+                    </select>
+                  <!-- <div   id="selectcategoryID"  formControlName="selectcategoryID" >
+                    <div disabled class="lbl" *ngFor="let d of categorynamedata index as i" >
+                    <button  *ngIf="d._id===dd.selectcategoryID" value="{{d._id}}">
+                    <!-- {{dd.selectcategoryID}} -->
+                    <!-- {{d.name}}
+                </button>
+            </div>
+                </div> -->
+                    <!-- <div *ngIf="d._id===prodata.selectcategoryID"> <input type="button" value="{{d._id}}">{{d.name}}</div>  </div>  -->
+                
+            </div></div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="selectQtypeID" id="selectQtypeID" >Select Quntity Type Name :</label></div>
+                <div class="col">
+                    <!-- (change)="loadbasetype2()" -->
+                    <select  id="selectQtypeID"  formControlName="selectQtypeID"  class="lbl" >
+                        <option disabled class="lbl">Select Quntity Type Name </option>
+                        <option disabled class="lbl" *ngFor="let d of Qtypenamedata index as i" [selected]="d._id===prodata[0].selectQtypeID" value="{{d._id}}" >{{d.name}}</option>
+                    </select>
+                    <!-- <div   id="selectQtypeID"  formControlName="selectQtypeID" >
+                        <div disabled  *ngFor="let d of Qtypenamedata index as i" >
+                        <button  *ngIf="d._id===dd.selectQtypeID" value="{{d._id}}">
+                        <!-- {{dd.selectcategoryID}} -->
+                        <!-- {{d.name}}
+                    </button>
+                </div>
+                    </div> -->
+                   
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="selectBaseTypeID" id="selectBaseTypeID" >Select  Sub Quantity Type:</label></div>
+                <div class="col">
+                    <select id="selectBaseTypeID"  formControlName="selectBaseTypeID"  class="lbl">
+                        <option disabled class="lbl">Select  Sub Quantity Type Name</option>
+                        <option class="lbl" *ngFor="let d of _basetypedata index as i" [selected]="d._id===prodata[0].selectBaseTypeID" value="{{d._id}}" >{{d.Basetypename}}</option>
+                    </select>
+                    <!-- <div  > {{dd.selectBaseTypeID}}</div> -->
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="ProductPrice" id="ProductPrice" >Product Price :</label></div>
+                <div class="col"><input class="lbl" type="text" formControlName="ProductPrice"  id="ProductPricetxt"/></div>
+               </div>
+               <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+            <div class="row">
+        <div class="col"><button class="bt1n" [disabled]="myAddForm.invalid"  type="submit">Add Product Price</button>
+        </div> 
+     </div>
+
+    </form>
+        
+        </div> 
+    </div>
+             <!-- right col -->
+             <div class=" comman" *ngIf="showEdit">
+       
+                <div class="row box">
+           
+            <form  [formGroup]="myEditForm" (ngSubmit)="onFormUpdateSubmit()" class="col lbl2" >
+                <button  class="close" (click)="close()">Close</button>
+                <div class="col"><h2 ><b>Edit</b></h2></div>
+                <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+            <div class="form-group row" >
+                <div class="col"><label class="lbl" for="SelectProductId" id="SelectProductId" >Select Product :</label></div>
+                <div class="col" >
+                    <select id="SelectProductId"  formControlName="SelectProductId"  class="lbl">
+                        <option disabled class="lbl">Select Product Name</option>
+                        <option disabled class="lbl" *ngFor="let d of Productnamedata index as i" [selected]="d._id===popdata2.SelectProductId" value="{{d._id}}" >{{d.Productname}}</option>
+                    </select>
+                </div>
+            </div>
+             <div class="form-group row">
+                <div class="col"><label class="lbl" for="categoryname" id="categoryname" >Select Category Name :</label></div>
+                <div class="col">
+                    <select id="selectcategoryID"  formControlName="selectcategoryID"  class="lbl">
+                        <option disabled class="lbl">Select Category Name</option>
+                        <option disabled class="lbl" *ngFor="let d of categorynamedata index as i" [selected]="d._id===popdata2.selectcategoryID" value="{{d._id}}" >{{d.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="categoryname" id="categoryname" >Select Quntity Type Name :</label></div>
+                <div class="col">
+                    <!-- (change)="loadbasetype2()" -->
+                    <select  id="selectQtypeID"  formControlName="selectQtypeID"  class="lbl" >
+                        <option disabled class="lbl">Select Quntity Type Name </option>
+                        <option disabled class="lbl" *ngFor="let d of Qtypenamedata index as i" [selected]="d._id===popdata2.selectQtypeID" value="{{d._id}}" >{{d.name}}</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="categoryname" id="categoryname" >Select  Sub Quantity Type:</label></div>
+                <div class="col">
+                    <select id="selectBaseTypeID"  formControlName="selectBaseTypeID"  class="lbl">
+                        <option class="lbl">Select  Sub Quantity Type Name</option>
+                        <option class="lbl" *ngFor="let d of _basetypedata index as i" [selected]="d._id===popdata2.selectBaseTypeID" value="{{d._id}}" >{{d.Basetypename}}</option>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="ProductPrice" id="ProductPrice" >Product Price :</label></div>
+                <div class="col"><input style="width: 114px; margin: 3px;" type="text" formControlName="ProductPrice"></div>
+               </div>
+            
+        
+            <div class="form-group row"> 
+               <div class="col"> 
+             
+            
+           <button class="bt1n" style=" margin: 3px;" id="b{{popdata2._id}}" >Update</button>
+        </div>
+        </div>
+    </form>
+        </div>  
+    
+    </div>
+    <div *ngIf="editag">
+<ag-grid-angular class="box ag-theme-quartz"
+style="height:500px;" 
+[rowData]="ppname"
+    [columnDefs]="colDefs" 
+[pagination]="pagination"
+[paginationPageSize]="paginationPageSize"
+[paginationPageSizeSelector]="paginationPageSizeSelector"
+(cellClicked)="onCellClick($event)"
+    />
+<div >
+    <jsk-popup (deletedconfirmedclicked)="deletedConfirmed($event)" (clicked)="handleChildClick()" [style]="display" [tabname]="tablename" [data]="valueid" [modal]="modal"></jsk-popup>
+</div>
+    </div>

@@ -5,7 +5,6 @@ import {
 } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideAuthStore, provideSetupStore, StoreType } from './app.store';
 import { authInterceptor } from './auth';
@@ -17,6 +16,7 @@ const storeType = StoreType.Ngxs;
 export const appConfig: ApplicationConfig = {
   providers: [
     // Setup Angular
+    
     provideExperimentalZonelessChangeDetection(),
     provideAnimationsAsync(),
 
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([
         authInterceptor,
         // ⚠️ FIXME: remove it in real app ⚠️
-        fakeApiInterceptor,
+      //  fakeApiInterceptor,
       ])
     ),
 

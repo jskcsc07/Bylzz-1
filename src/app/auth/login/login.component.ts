@@ -10,7 +10,7 @@ import { combineLatest } from 'rxjs';
 import { AUTH_FACADE } from '../tokens';
 
 @Component({
-  selector: 'aa-login',
+  selector: 'jsk-login',
   imports: [
     AsyncPipe,
     MatButtonModule,

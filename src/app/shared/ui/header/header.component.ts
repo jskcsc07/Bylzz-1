@@ -16,7 +16,7 @@ interface MenuItem {
 }
 
 @Component({
-  selector: 'aa-header',
+  selector: 'jsk-header',
   imports: [
     AvatarComponent,
     IconModule,
@@ -39,5 +39,22 @@ export class HeaderComponent {
     { link: '/home', label: 'Home', icon: 'home' },
     { link: '/about', label: 'About', icon: 'info-circle' },
     { link: '/secured-feat', label: 'Secured Feature', icon: 'lock' },
+    { link: '/manage', label: 'Manage Products', icon: 'lock' },
+    // { link: '/category', label: 'category', icon: 'lock'  },
+    // { link: '/Quantitytype', label: 'Quantitytype', icon: 'lock'  },
+    // { link: '/basetype', label: 'basetype', icon: 'lock'  },
+    // { link: '/product', label: 'product', icon: 'lock'  },
+    // { link: '/productprice', label: 'productprice', icon: 'lock'  },
+    // { link: '/tax', label: 'tax', icon: 'lock'  },
+    { link: '/dines', label: 'Dines', icon: 'lock' },
+    // { link: '/chair', label: 'chair', icon: 'lock' },
+    // { link: '/floor', label: 'floor', icon: 'lock' },
+    { link: '/inventory', label: 'Inventory', icon: 'lock' },
+    // { link: '/imf', label: 'Inventory Main Food', icon: 'lock' },
+    // { link: '/ifqt', label: 'Inventory Food Quantity Type', icon: 'lock' },
+    // { link: '/imfwp', label: 'Assocciate Inventory Food With Product', icon: 'lock' },
+    // // { link: '/Payby', label: 'Payby', icon: 'lock'  },
+    { link: '/employee', label: 'employee', icon: 'lock' },
+    { link: '/companyprofile', label: 'companyprofile', icon: 'lock' },
   ];
 }

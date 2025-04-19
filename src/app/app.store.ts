@@ -15,7 +15,7 @@ import {
   withNgxsDevelopmentOptions,
 } from '@ngxs/store';
 
-import { environment } from '../environments/environment';
+import { environment2 } from '../environments/environment';
 
 import { provideNgrxAuthStore, provideNgxsAuthStore } from './auth';
 
@@ -31,7 +31,7 @@ export enum StoreType {
  * It supports both Ngrx and Ngxs.
  */
 export function provideSetupStore(storeType: StoreType) {
-  const isDevToolsEnabled = !environment.production;
+  const isDevToolsEnabled = !environment2.production;
 
   const providers = {
     ngrx: [

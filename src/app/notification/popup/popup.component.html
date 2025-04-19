@@ -1,0 +1,19 @@
+<div>
+
+  <div id="id01" [style]="style" class="comman" [class]="modals ">
+    <span (click)="close()" class="close" title="Close Modal">×</span>
+
+    <div class="container">
+      <h1>Delete Record</h1>
+      <p>Are you sure you want to delete?</p>
+
+      <div class="clearfix">
+        <button type="button" (click)="notifyParent()" [value]="false" (click)="close()"
+          class="cancelbtn">Cancel</button>
+        <button type="button" (click)="deletedConfirmed()" [value]="true" (click)="Delete()"
+          class="deletebtn">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>

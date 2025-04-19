@@ -1,14 +1,16 @@
+import { environment } from "../environment/environment";
+
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { version } = require('../../package.json');
 
-export const environment = {
+export const environment2 = {
   production: true,
   appVersion: version,
 
   // Replace this with your server API URL
   // We assigned it to empty string for the Fake API
+  //apiUrl: environment,
   apiUrl: '',
-
   settings: {
     auth: {
       // OAuth2 credentials

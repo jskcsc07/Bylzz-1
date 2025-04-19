@@ -8,7 +8,7 @@ import { AUTH_FACADE } from '../../auth';
 import { USERS } from '../../core/fake-api';
 import { GreetingUtil } from '../../shared/util';
 @Component({
-  selector: 'aa-secured-feat',
+  selector: 'jsk-secured-feat',
   imports: [AsyncPipe, MatCardModule, MatTableModule],
   templateUrl: './secured-feat.component.html',
 })

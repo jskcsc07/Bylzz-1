@@ -8,7 +8,7 @@ import { IconModule } from '../../shared/ui/icon';
 import { Feature, features } from './features.data';
 
 @Component({
-  selector: 'aa-home',
+  selector: 'jsk-home',
   imports: [IconModule, MatButtonModule, MatCardModule, MatTooltipModule],
   templateUrl: './home.component.html',
 })

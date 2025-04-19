@@ -3,9 +3,9 @@ import { bootstrapApplication } from '@angular/platform-browser';
 
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
-import { environment } from './environments/environment';
+import { environment2 } from './environments/environment';
 
-if (environment.production) {
+if (environment2.production) {
   enableProdMode();
 }
 

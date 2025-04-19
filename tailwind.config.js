@@ -1,5 +1,5 @@
 module.exports = {
-  prefix: 'aa--',
+  prefix: 'jsk--',
   important: true,
   content: ['./src/**/*.{html,ts}'],
   theme: {

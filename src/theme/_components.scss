@@ -1,25 +1,25 @@
-// Section styles
+Section styles
 section {
-  @apply aa--mb-12 aa--mt-4 lg:aa--mb-16;
+  @apply jsk--mb-12 jsk--mt-4 lg:jsk--mb-16;
 }
 
 // Alert styles
 .alert {
-  @apply aa--mb-4 aa--rounded-lg aa--p-4;
+  @apply jsk--mb-4 jsk--rounded-lg jsk--p-4;
 
   &.alert--success {
-    @apply aa--bg-green-100 aa--text-green-800;
+    @apply jsk--bg-green-100 jsk--text-green-800;
   }
 
   &.alert--error {
-    @apply aa--bg-red-100 aa--text-red-800;
+    @apply jsk--bg-red-100 jsk--text-red-800;
   }
 
   &.alert--info {
-    @apply aa--bg-blue-100 aa--text-blue-800;
+    @apply jsk--bg-blue-100 jsk--text-blue-800;
   }
 
   &.alert--warning {
-    @apply aa--bg-yellow-100 aa--text-yellow-800;
+    @apply jsk--bg-yellow-100 jsk--text-yellow-800;
   }
 }

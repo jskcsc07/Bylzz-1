@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'aa-avatar',
+  selector: 'jsk-avatar',
   template: `
     {{ computedText }}
   `,

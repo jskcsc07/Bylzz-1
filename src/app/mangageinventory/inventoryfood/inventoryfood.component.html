@@ -1,0 +1,165 @@
+<!-- name:             
+description:      
+quantitytypeID:   
+quantitytypename: 
+quantitytypevalue: -->
+
+
+<div >
+    <h4 class="titleh4">Raw Materials Assocciate With Product Management</h4>
+    <button class="bt1n btnbox" id="show" (click)="shows()">+Add Assocciate Raw Materials</button>
+    <button class="bt1n btnbox" id="edit" (click)="edit()">Edit  Assocciate Raw Materials</button>
+</div>
+
+
+<div class="comman" *ngIf="show" >
+    
+    <div class="row box">
+        
+        <form [formGroup]="myAddForm" (ngSubmit)="onFormSubmit()" #f="ngForm" class="col lbl2" >
+            <button  class="close" (click)="close()">Close</button>
+            <div class="row lbl"><h6>Assocciate food material with product (like Onion, Tomato, Salt etc with chilly potato )</h6></div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="ProductId" id="ProductId">Select Product :</label>
+                </div>
+                <div class="col">
+                    <select class="lbl" formControlName="ProductId" (change)="getppandbasetypedetail()">
+                        <option class="lbl" *ngFor="let d of productdata" value="{{d._id}}">{{d.Productname}}</option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-group row" *ngIf="_InventoryFoodwithProduct2List.length!=0">
+                    <div class="col"><label class="lbl" for="Basetypeid" id="Basetypeid">Select Quantiy type :</label>
+                    </div>
+                    <div class="col">
+                        <select class="lbl" formControlName="Basetypeid" (change)="showubelement()" >
+                            <option class="lbl" *ngFor="let d of _InventoryFoodwithProduct2List" value="{{d.Basetypeid}}">{{d.Basetypename}}</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="row form-group" *ngIf="showubelements">
+                        <div class="col">
+                            <select class="lbl" formControlName="inventoryfoodmain_id" (change)="getqtname()">
+                                <option class="lbl" *ngFor="let d of inventoryfoodmaindata" value="{{d._id}}">{{d.name}}</option>
+                            </select>
+                        </div>
+                       
+                        <div class="col">  <input class="lbl" type="number" placeholder="Enter Quantiy"  id="quantitytypevalue" formControlName="quantitytypevalue"/></div>
+                        <div class="col">  <label class="lbl"  id="quantitytypename" formControlName="quantitytypename">{{quantitytypename}}</label></div>
+                        <div class="col"><input class="lbl" type="button"  id="nametxt" value="Add Material" (click)="addMaterial()" /></div> 
+                    </div> 
+                    <div class="form-group row" *ngIf="_GoodscollectionMergename_List.length!=0">
+                        <div class="col"><label class="lbl" for="ProductId" id="ProductId">Materials: </label>
+                        
+                                <div  style="height: 50px;width:auto;float: left;"  class="tag" *ngFor="let d of _GoodscollectionMergename_List" >{{d.Name}}<a style="height: 50px;width:50px;float: left;top: 0px;" (click)="deleterawitems(d.IventoryFoodMainId)" >X</a></div>
+                          
+                        </div>
+                    </div> 
+    
+     <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+    <div class="mt-2">
+       <button class="bt1n" type="submit" >Add </button>
+        
+    </div>
+   
+</form>
+         
+        </div>
+    </div>
+    <!-- right col -->
+    <div class=" comman" *ngIf="showEdit">
+       
+       
+        <div class="row box">
+           
+        <form [formGroup]="myEditForm" (ngSubmit)="onEditForm()" #f="ngForm" class="col lbl2">
+            <button  class="close" (click)="close()">Close</button>
+            <div class="row lbl"><h6>Assocciate food material with product (like Onion, Tomato, Salt etc with chilly potato )</h6></div>
+            <div class="form-group row">
+                <div class="col"><label class="lbl" for="ProductId" id="ProductId">Select Product :</label>
+                </div>
+                <div class="col">
+                    <select class="lbl" formControlName="ProductId" (change)="getppandbasetypedetail()">
+                        <option class="lbl" *ngFor="let d of productdata" value="{{d._id}}" disabled [selected]="popdata2.ProductId===d._id">{{d.Productname}}</option>
+                    </select>
+                </div>
+                </div>
+                <div class="form-group row" >
+                    <div class="col"><label class="lbl" for="Basetypeid" id="Basetypeid">Select Quantiy type :</label>
+                    </div>
+                    <div class="col">
+                        <select class="lbl" formControlName="Basetypeid" (change)="showubelement()" >
+                            <option class="lbl" *ngFor="let d of _InventoryFoodwithProduct2List" disabled value="{{d.Basetypeid}}" [selected]="popdata2.Basetypeid===d.Basetypeid">{{d.Basetypename}}</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col">
+                            <select class="lbl" formControlName="inventoryfoodmain_id" (change)="getqtnameforedit()">
+                                <option class="lbl" *ngFor="let d of inventoryfoodmaindata" value="{{d._id}}" >{{d.name}}</option>
+                            </select>
+                        </div>
+                       
+                        <div class="col">  <input class="lbl" type="number" placeholder="Enter Quantiy"  id="quantitytypevalue" formControlName="quantitytypevalue"/></div>
+                        <div class="col">  <label class="lbl"  id="quantitytypename" formControlName="quantitytypename">{{quantitytypename}}</label></div>
+                        <div class="col"><input class="lbl" type="button"  id="nametxt" value="Add Material" (click)="addMaterialforEdit()" /></div> 
+                    </div> 
+                    <div class="form-group row" *ngIf="_GoodscollectionMergename_List.length!=0">
+                        <div class="col"><label class="lbl" for="ProductId" id="ProductId">Materials: </label>
+                        
+                                <div style="height: 50px;width:auto;float: left"  class="tag" *ngFor="let d of _GoodscollectionMergename_List" >{{d.Name}}<a style="height: 20px;width:20px;float: right;top: 0px;" (click)="deleterawitems(d.IventoryFoodMainId)" >X</a></div>
+                          
+                        </div>
+                    </div> 
+    <!-- <div class="row form-group">
+        <div class="col"> <label class="lbl" for="name" id="name" > Name :</label></div>
+        <div class="col"><input class="lbl" type="text"  id="nametxt" formControlName="name"/></div> 
+    </div>
+    <div class="row form-group">
+        <div class="col">  <label class="lbl" for="description" id="description" > Description :</label></div>
+        <div class="col">  <input class="lbl" type="text"  id="descriptiontxt" formControlName="description"/></div>
+     </div>    
+     <div class="form-group row">
+        <div class="col"><label class="lbl" for="quantitytypeID" id="quantitytypeID">Select Quntity Type :</label>
+        </div>
+        <div class="col">
+            <select class="lbl" formControlName="quantitytypeID" (change)="getqtname()">
+                <option class="lbl" *ngFor="let d of Inventoryfoodquntitytype" value="{{d._id}}">{{d.name}}</option>
+            </select>
+        </div>
+    </div>   -->
+    <!-- <div class="form-group row" *ngIf="quantitytypename!=''"  style="visibility: hidden;">
+        <div class="col">  <label class="lbl" for="quantitytypename" id="quantitytypename" > quantitytypename :</label></div>
+        <div class="col">  <input class="lbl" type="text"  id="quantitytypenametxt" ngModel="{{quantitytypename}}" formControlName="quantitytypename"/></div>
+    </div>   -->
+    <!-- <div class="form-group row" *ngIf="quantitytypename!=''">
+        <div class="col">  <label class="lbl" for="description" id="quantitytypevalue" > quantitytypevalue :</label></div>
+        <div class="col">  <input class="lbl" type="number"  id="descriptiontxt" formControlName="quantitytypevalue"/></div>
+    </div>   -->
+     <jsk-confirmedelete [args]="args" ></jsk-confirmedelete>
+    
+     
+        <div class="row form-group">
+            <div class="col"> <button class="bt1n" style=" margin: 3px;" id="b{{popdata2._id}}" [disabled]="myEditForm.invalid " >Update</button>
+            </div>
+    </div>
+        </form>  
+</div>
+    </div> 
+     
+
+    
+    <div *ngIf="editag">
+      <ag-grid-angular class="box ag-theme-quartz"
+      style="height:500px;width: 100%;" 
+      [rowData]="fooddata"
+          [columnDefs]="colDefs" 
+      [pagination]="pagination"
+      [paginationPageSize]="paginationPageSize"
+      [paginationPageSizeSelector]="paginationPageSizeSelector"
+      (cellClicked)="onCellClick($event)"
+          />
+          <div >
+            <jsk-popup (deletedconfirmedclicked)="deletedConfirmed($event)" (clicked)="handleChildClick()" [style]="display" [tabname]="tablename" [data]="valueid" [modal]="modal"></jsk-popup>
+        </div> 
+    </div>

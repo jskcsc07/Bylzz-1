@@ -12,7 +12,7 @@ interface PersonalLink {
 }
 
 @Component({
-  selector: 'aa-footer',
+  selector: 'jsk-footer',
   imports: [DatePipe, IconModule, MatButtonModule],
   templateUrl: './footer.component.html',
 })

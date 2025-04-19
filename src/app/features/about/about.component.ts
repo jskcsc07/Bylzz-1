@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { IconModule } from '../../shared/ui/icon';
 
 @Component({
-  selector: 'aa-about',
+  selector: 'jsk-about',
   imports: [MatButtonModule, IconModule],
   templateUrl: './about.component.html',
 })

@@ -10,15 +10,15 @@ import { FooterComponent } from './shared/ui/footer';
 import { HeaderComponent } from './shared/ui/header';
 
 @Component({
-  selector: 'aa-root',
+  selector: 'jsk-root',
   imports: [AsyncPipe, RouterOutlet, HeaderComponent, FooterComponent],
   template: `
     <div class="content">
-      <aa-header [authUser]="authUser$ | async" (logout)="onLogout()" />
+      <jsk-header [authUser]="authUser$ | async" (logout)="onLogout()" />
 
       <div class="main-content">
         <main><router-outlet /></main>
-        <aa-footer [version]="version" />
+        <jsk-footer [version]="version" />
       </div>
     </div>
   `,
